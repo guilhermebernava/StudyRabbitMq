@@ -31,6 +31,8 @@ public class ProducerServices : IProducerServices
         //criando um canal para poder criar uma queue
         _channel = _connection.CreateModel();
 
+        //Criando um EXCHANGE para que as QUEUE consigam dar um BIND nele.
+        //com isso é possivel mandar a mesma mensagem para varias QUEUEs diferentes.
         _channel.ExchangeDeclare(exchange: "Test", type: ExchangeType.Fanout);
     }
     public bool SendMessage(string message)
