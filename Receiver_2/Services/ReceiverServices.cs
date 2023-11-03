@@ -3,7 +3,7 @@ using RabbitMQ.Client.Events;
 using System.Text;
 using System.Threading.Channels;
 
-namespace Receiver.Services;
+namespace Receiver_2.Services;
 
 //Ela precisa ser um BACKGROUND SERVICES para poder rodar em segundo plano
 //para sempre que receber uma mensagem ela rodar esse codigo
@@ -38,7 +38,7 @@ public class ReceiverServices : BackgroundService
         //criando uma queue caso nao exista
         _channel.QueueDeclare(queue: _queueName,exclusive: false,autoDelete: false);
 
-        _channel.QueueBind(queue: _queueName,exchange: "Test",routingKey: "2");
+        _channel.QueueBind(queue: _queueName,exchange: "Test",routingKey: "1");
 
         //Vai configurar quantas mensagens esse RECEIVER vai receber e trator por vez
         //nesse caso ele vai receber 1 mensagem por vez;
@@ -57,7 +57,7 @@ public class ReceiverServices : BackgroundService
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            Console.WriteLine($"Message Received QUEUE 2 :({DateTime.Now}) - {message}");
+            Console.WriteLine($"Message Received QUEUE 1: ({DateTime.Now}) - {message}");
 
             //Vai dizer que a mensagem foi processada com sucesso;
             _channel.BasicAck(ea.DeliveryTag, false);

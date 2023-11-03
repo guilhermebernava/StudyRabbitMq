@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sender", "Api\Sender.csproj", "{A368CF1B-5440-4EDC-99D3-BC8B92E6FF5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sender", "Api\Sender.csproj", "{A368CF1B-5440-4EDC-99D3-BC8B92E6FF5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receiver", "Receiver\Receiver.csproj", "{9B37EAB4-3B58-4C82-9CAE-990821DBD9CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Receiver", "Receiver\Receiver.csproj", "{9B37EAB4-3B58-4C82-9CAE-990821DBD9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receiver_2", "Receiver_2\Receiver_2.csproj", "{586F087A-71F4-4003-AAA5-AD57D4FAEEBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9B37EAB4-3B58-4C82-9CAE-990821DBD9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B37EAB4-3B58-4C82-9CAE-990821DBD9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B37EAB4-3B58-4C82-9CAE-990821DBD9CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{586F087A-71F4-4003-AAA5-AD57D4FAEEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{586F087A-71F4-4003-AAA5-AD57D4FAEEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{586F087A-71F4-4003-AAA5-AD57D4FAEEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{586F087A-71F4-4003-AAA5-AD57D4FAEEBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
