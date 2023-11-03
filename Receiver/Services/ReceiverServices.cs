@@ -25,10 +25,6 @@ public class ReceiverServices : BackgroundService
             VirtualHost = configuration["RabbitMQConnection:VirtualHost"]
         };
 
-        //definindo o nome da queue, lembrando que precisa
-        //ser o mesmo lado do receiver
-        _queueName = configuration["QueueName"];
-
         //criando uma connection de fato com o rabbitMQ
         _connection = connectionFactory.CreateConnection();
 
@@ -36,9 +32,9 @@ public class ReceiverServices : BackgroundService
         _channel = _connection.CreateModel();
 
         //criando uma queue caso nao exista
-        _channel.QueueDeclare(queue: _queueName,exclusive: false,autoDelete: false);
+        _queueName = _channel.QueueDeclare(exclusive: false, autoDelete: false).QueueName;
 
-        _channel.QueueBind(queue: _queueName,exchange: "Test",routingKey: "2");
+        _channel.QueueBind(queue: _queueName, exchange: "Test2",routingKey: "*.*");
 
         //Vai configurar quantas mensagens esse RECEIVER vai receber e trator por vez
         //nesse caso ele vai receber 1 mensagem por vez;
@@ -57,7 +53,7 @@ public class ReceiverServices : BackgroundService
         {
             var body = ea.Body.ToArray();
             var message = Encoding.UTF8.GetString(body);
-            Console.WriteLine($"Message Received QUEUE 2 :({DateTime.Now}) - {message}");
+            Console.WriteLine($"Message Received QUEUE # :({DateTime.Now}) - {message}");
 
             //Vai dizer que a mensagem foi processada com sucesso;
             _channel.BasicAck(ea.DeliveryTag, false);

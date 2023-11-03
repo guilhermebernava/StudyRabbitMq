@@ -33,7 +33,7 @@ public class ProducerServices : IProducerServices
 
         //Criando um EXCHANGE para que as QUEUE consigam dar um BIND nele.
         //com isso é possivel mandar a mesma mensagem para varias QUEUEs diferentes.
-        _channel.ExchangeDeclare(exchange: "Test", type: ExchangeType.Direct);
+        _channel.ExchangeDeclare(exchange: "Test2", type: ExchangeType.Topic,durable: true);
     }
     public bool SendMessage(string message)
     {
@@ -42,13 +42,10 @@ public class ProducerServices : IProducerServices
             //está pegando a mensagem e transformando em bytes para poder mandar para a QUEUE.
             var body = Encoding.UTF8.GetBytes(message);
 
-            
-            //gerando um numero aleatorio entre 1 e 2 para mandar para x ou y queue.
-            Random random = new Random();
-            int randomNumber = random.Next(1, 3);
+   
 
             //está de fato enviando a mensagem para QUEUE
-            _channel.BasicPublish(exchange: "Test", routingKey: randomNumber.ToString(), basicProperties: null, body: body);
+            _channel.BasicPublish(exchange: "Test2", routingKey: "test.critical", basicProperties: null, body: body);
             return true;
         }
         catch
